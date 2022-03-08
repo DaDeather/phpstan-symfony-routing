@@ -1,0 +1,63 @@
+{
+    "name": "dadadev/phpstan-symfony-routing",
+    "description": "A phpstan plugin to analyze generating of routes from symfony routing",
+    "type": "phpstan-extension",
+    "keywords": ["php", "phpstan", "symfony", "routing", "bundle"],
+    "homepage": "https://dadadev.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ismail Özgün Turan",
+            "email": "oezguen.turan@dadadev.com",
+            "homepage": "https://dadadev.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1 || ^8.0",
+        "phpstan/phpstan": "^1.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "php-parallel-lint/php-parallel-lint": "^1.2",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpstan/phpstan-strict-rules": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0",
+        "symfony/polyfill-php80": "^1.24",
+        "symfony/routing": "^4.4 || ^5.0 || ^6.0"
+    },
+    "scripts": {
+        "php-cs-fix": "vendor/bin/php-cs-fixer fix -v --config=.php-cs-fixer.dist.php",
+        "php-cs-check": "vendor/bin/php-cs-fixer fix -v --config=.php-cs-fixer.dist.php --dry-run",
+        "phpstan": "vendor/bin/phpstan analyse",
+        "phpunit": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon",
+                "rules.neon"
+            ]
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "conflict": {
+        "symfony/framework-bundle": "<3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DaDaDev\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "prefer-stable": true
+}

@@ -1,0 +1,3 @@
+rules:
+	- DaDaDev\Rules\Symfony\UrlGeneratorInterfaceUnknownRouteRule
+

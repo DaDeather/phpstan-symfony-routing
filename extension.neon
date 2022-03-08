@@ -1,0 +1,21 @@
+parameters:
+	dynamicConstantNames:
+		- Symfony\Component\HttpKernel\Kernel::VERSION_ID
+	dadadev:
+		urlGeneratingRulesFile: null
+
+parametersSchema:
+	dadadev: structure([
+		urlGeneratingRulesFile: schema(string(), nullable())
+	])
+
+services:
+	-
+		factory: DaDaDev\Symfony\Configuration(%dadadev%)
+
+	# url generating routes map
+	symfony.urlGeneratingRoutesMapFactory:
+		class: DaDaDev\Symfony\UrlGeneratingRoutesMapFactory
+		factory: DaDaDev\Symfony\PhpUrlGeneratingRoutesMapFactory
+	-
+		factory: @symfony.urlGeneratingRoutesMapFactory::create()
