@@ -33,6 +33,17 @@ final class DefaultUrlGeneratingRoutesMap implements UrlGeneratingRoutesMap
         return false;
     }
 
+    public function getRouteRequirements(string $name): array
+    {
+        foreach ($this->routes as $route) {
+            if ($route->getName() === $name) {
+                return $route->getRequiredUrlParams();
+            }
+        }
+
+        return [];
+    }
+
     public static function getRouteNameFromNode(Expr $node, Scope $scope): ?string
     {
         $strings = TypeUtils::getConstantStrings($scope->getType($node));

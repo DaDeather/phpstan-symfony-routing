@@ -10,6 +10,7 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\TypeUtils;
 
 /**
  * @implements Rule<MethodCall>
@@ -63,6 +64,32 @@ final class UrlGeneratorInterfaceUnknownRouteRule implements Rule
 
         if ($this->urlGeneratingRoutesMap->hasRouteName($routeName) === false) {
             return [sprintf('Route with name "%s" does not exist.', $routeName)];
+        }
+
+        $routeRequirements = $this->urlGeneratingRoutesMap->getRouteRequirements($routeName);
+        if (
+            $routeRequirements !== []
+            && count($node->getArgs()) < 2
+        ) {
+            return [sprintf('Route with name "%s" has requires parameters "%s" to be given.', $routeName, implode(', ', array_keys($routeRequirements)))];
+        }
+
+        if (
+            $routeRequirements !== []
+            && $scope->getType($node->getArgs()[1]->value)->isArray()->yes()
+        ) {
+            $requiredParamsArrayType = $scope->getType($node->getArgs()[1]->value);
+            $requiredParamConstantStrings = TypeUtils::getConstantStrings($requiredParamsArrayType->getIterableKeyType());
+
+            foreach ($routeRequirements as $name => $requirement) {
+                foreach ($requiredParamConstantStrings as $requiredParamConstantString) {
+                    if ($name === $requiredParamConstantString->getValue()) {
+                        continue 2;
+                    }
+                }
+
+                return [sprintf('Route with name "%s" is missing required param %s.', $routeName, $name)];
+            }
         }
 
         return [];

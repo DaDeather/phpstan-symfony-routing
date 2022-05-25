@@ -14,6 +14,11 @@ final class FakeUrlGeneratingRoutesMap implements UrlGeneratingRoutesMap
         return false;
     }
 
+    public function getRouteRequirements(string $name): array
+    {
+        return [];
+    }
+
     public static function getRouteNameFromNode(Expr $node, Scope $scope): ?string
     {
         return null;

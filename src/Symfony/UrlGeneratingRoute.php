@@ -12,12 +12,20 @@ class UrlGeneratingRoute implements UrlGeneratingRoutesDefinition
     /** @var string */
     private $controller;
 
+    /** @var array<string, string> */
+    private $urlRequiredParams;
+
+    /**
+     * @param array<string, string> $urlParams
+     */
     public function __construct(
         string $name,
-        string $controller
+        string $controller,
+        array $urlParams
     ) {
         $this->name = $name;
         $this->controller = $controller;
+        $this->urlRequiredParams = $urlParams;
     }
 
     public function getName(): string
@@ -28,5 +36,11 @@ class UrlGeneratingRoute implements UrlGeneratingRoutesDefinition
     public function getController(): ?string
     {
         return $this->controller;
+    }
+
+    /** @return array<string, string> */
+    public function getRequiredUrlParams(): array
+    {
+        return $this->urlRequiredParams;
     }
 }

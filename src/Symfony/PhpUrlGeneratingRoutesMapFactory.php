@@ -43,7 +43,11 @@ final class PhpUrlGeneratingRoutesMapFactory implements UrlGeneratingRoutesMapFa
                 continue;
             }
 
-            $routes[] = new UrlGeneratingRoute($routeName, $routeConfiguration[1]['_controller']);
+            $routes[] = new UrlGeneratingRoute(
+                $routeName,
+                $routeConfiguration[1]['_controller'],
+                $routeConfiguration[2] ?? []
+            );
         }
 
         return new DefaultUrlGeneratingRoutesMap($routes);
