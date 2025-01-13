@@ -44,6 +44,6 @@ You have to provide a path to `url_generating_routes.php` for the url generating
 
 ```yaml
 parameters:
-    symfony:
-      urlGeneratingRulesFile: var/cache/dev/url_generating_routes.xml
+    dadadev:
+      urlGeneratingRulesFile: var/cache/dev/url_generating_routes.php
 ```
