@@ -27,4 +27,24 @@ final class ExampleControllerWithRoutingAndRequirements extends AbstractControll
     {
         $this->generateUrl('someRoute1', ['number' => 1, 'date' => '2022-05-25']);
     }
+
+    public function redirectToSomeRoute1(): void
+    {
+        $this->redirectToRoute('someRoute1');
+    }
+
+    public function redirectToSomeRoute2(): void
+    {
+        $this->redirectToRoute('someRoute1', ['number' => 1]);
+    }
+
+    public function redirectToSomeRoute3(): void
+    {
+        $this->redirectToRoute('someRoute1', ['date' => '2022-05-25']);
+    }
+
+    public function redirectToSomeRoute4(): void
+    {
+        $this->redirectToRoute('someRoute1', ['number' => 1, 'date' => '2022-05-25']);
+    }
 }

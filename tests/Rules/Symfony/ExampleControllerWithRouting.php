@@ -17,4 +17,14 @@ final class ExampleControllerWithRouting extends AbstractController
     {
         $this->generateUrl('unknown');
     }
+
+    public function redirectToSomeRoute1(): void
+    {
+        $this->redirectToRoute('someRoute1');
+    }
+
+    public function redirectToNonExistingRoute(): void
+    {
+        $this->redirectToRoute('unknown');
+    }
 }

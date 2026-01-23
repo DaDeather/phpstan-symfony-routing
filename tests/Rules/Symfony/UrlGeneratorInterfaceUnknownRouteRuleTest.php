@@ -34,6 +34,10 @@ final class UrlGeneratorInterfaceUnknownRouteRuleTest extends RuleTestCase
                     'Route with name "unknown" does not exist.',
                     18,
                 ],
+                [
+                    'Route with name "unknown" does not exist.',
+                    28,
+                ],
             ]
         );
     }
