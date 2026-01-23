@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace DaDaDev\Symfony;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class DefaultUrlGeneratingRoutesMapTest extends TestCase
 {
-    /**
-     * @dataProvider hasRouteNameProvider
-     */
+    #[DataProvider('hasRouteNameProvider')]
     public function testHasRouteName(string $name, callable $validator): void
     {
         $factory = new PhpUrlGeneratingRoutesMapFactory(new Configuration(['urlGeneratingRulesFile' => __DIR__ . '/url_generating_routes.php']));
@@ -20,7 +19,7 @@ final class DefaultUrlGeneratingRoutesMapTest extends TestCase
     /**
      * @return \Iterator<mixed>
      */
-    public function hasRouteNameProvider(): \Iterator
+    public static function hasRouteNameProvider(): \Iterator
     {
         yield [
             'unknown',
