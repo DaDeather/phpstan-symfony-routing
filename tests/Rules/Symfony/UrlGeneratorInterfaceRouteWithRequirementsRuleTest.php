@@ -42,6 +42,18 @@ final class UrlGeneratorInterfaceRouteWithRequirementsRuleTest extends RuleTestC
                     'Route with name "someRoute1" is missing required param number.',
                     23,
                 ],
+                [
+                    'Route with name "someRoute1" has requires parameters "number, date" to be given.',
+                    33,
+                ],
+                [
+                    'Route with name "someRoute1" is missing required param date.',
+                    38,
+                ],
+                [
+                    'Route with name "someRoute1" is missing required param number.',
+                    43,
+                ],
             ]
         );
     }

@@ -42,7 +42,7 @@ final class UrlGeneratorInterfaceUnknownRouteRule implements Rule
             return [];
         }
 
-        if (in_array($node->name->name, ['generate', 'generateUrl'], true) === false || !isset($node->getArgs()[0])) {
+        if (in_array($node->name->name, ['generate', 'generateUrl', 'redirectToRoute'], true) === false || !isset($node->getArgs()[0])) {
             return [];
         }
 
