@@ -21,7 +21,7 @@
         "php-parallel-lint/php-parallel-lint": "^1.2",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^12.0",
         "symfony/framework-bundle": "^6.4 || ^7.0 || ^8.0",
         "symfony/polyfill-php80": "^1.24",
         "symfony/routing": "^6.4 || ^7.0 || ^8.0"
@@ -30,7 +30,7 @@
         "php-cs-fix": "vendor/bin/php-cs-fixer fix -v --config=.php-cs-fixer.dist.php",
         "php-cs-check": "vendor/bin/php-cs-fixer fix -v --config=.php-cs-fixer.dist.php --dry-run",
         "phpstan": "vendor/bin/phpstan analyse",
-        "phpunit": "vendor/bin/phpunit"
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit"
     },
     "config": {
         "sort-packages": true

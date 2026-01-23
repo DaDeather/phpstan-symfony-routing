@@ -3,28 +3,33 @@
          bootstrap="tests/bootstrap.php"
          colors="true"
          backupGlobals="false"
-         backupStaticAttributes="false"
+         backupStaticProperties="false"
          beStrictAboutChangesToGlobalState="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
-         beStrictAboutTodoAnnotatedTests="true"
          failOnRisky="true"
          failOnWarning="true"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         cacheDirectory=".phpunit.cache"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
 >
+
     <coverage>
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
         <report>
             <clover outputFile="tests/tmp/clover.xml"/>
-            <text
-                outputFile="php://stdout"
-                showUncoveredFiles="true"
-                showOnlySummary="true"
+            <text outputFile="php://stdout"
+                  showUncoveredFiles="true"
+                  showOnlySummary="true"
             />
         </report>
     </coverage>
+
+    <logging/>
+
+    <source>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </source>
 
     <testsuites>
         <testsuite name="PHPStan for Symfony Routing">
@@ -32,5 +37,4 @@
         </testsuite>
     </testsuites>
 
-    <logging/>
 </phpunit>
